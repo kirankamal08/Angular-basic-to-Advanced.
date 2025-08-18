@@ -1,0 +1,7 @@
+Parent Component <br>
+<a (click)="changeInput()">Change input</a>
+<!-- <a routerLink="/child-view">Child component</a> -->
+ <app-child [childMessage]=msgForChild (messageToParent)="helloParent($event)"></app-child> <br>
+ 
+
+ Child Saying - {{childMsg}}

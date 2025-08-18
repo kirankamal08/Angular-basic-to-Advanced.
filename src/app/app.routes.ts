@@ -1,3 +1,26 @@
 import { Routes } from '@angular/router';
+import { Day1FundamentalsComponent } from './features/day-1-fundamentals/day-1-fundamentals.component';
+import { ChildComponent } from './features/day-1-fundamentals/child/child.component';
+import { AppComponent } from './app.component';
+import { register } from 'node:module';
+import { RegisterComponent } from './features/users/register/register.component';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+    // {
+    //     path:'basic-fundamentals',
+    //     component:Day1FundamentalsComponent,
+    //     data: {title:'Basic fundamentals'}
+    // },
+    // {
+    //     path:'child-view',
+    //     component:ChildComponent,
+    //     data:{title:'chils-view'}
+    // }
+     { path: 'parent-component', component: Day1FundamentalsComponent },
+    { path: 'child-view', component: ChildComponent },
+    { path: '', component: Day1FundamentalsComponent },
+     { path: 'register', component:RegisterComponent },
+    //{ path: 'contact', component: ContactComponent },
+    //{ path: '', redirectTo: '/basic-fundamentals', pathMatch: 'full' },
+  //  { path: '', component: AppComponent, pathMatch: 'full' }
+];
