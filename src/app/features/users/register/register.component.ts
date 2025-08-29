@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {ReactiveFormsModule, FormBuilder, FormControl, FormGroup, Validators, AbstractControl, ValidationErrors, ValidatorFn} from '@angular/forms'
+import {ReactiveFormsModule, FormBuilder, FormControl,FormArray, FormGroup, Validators, AbstractControl, ValidationErrors, ValidatorFn} from '@angular/forms'
 
 // ✅ Must be outside the class
 export const passwordMatchValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
@@ -44,5 +44,21 @@ export class RegisterComponent {
       this.formRegister.markAllAsTouched(); // Highlight errors
     }
   }
+
+  // Getter for easy access in template
+    get phoneNumbers(): FormArray {
+      return this.formRegister.get('phoneNumbers') as FormArray;
+    }
+
+    // Add a new phone number
+    addPhoneNumber() {
+      this.phoneNumbers.push(this.fb.control('', Validators.required));
+    }
+
+    // Remove a phone number by index
+    removePhoneNumber(index: number) {
+      this.phoneNumbers.removeAt(index);
+    }
+
 
 }

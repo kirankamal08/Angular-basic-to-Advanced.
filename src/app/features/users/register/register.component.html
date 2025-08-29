@@ -52,10 +52,24 @@
                 </div>
                 <div class="invalid-feedback" *ngIf="formRegister.errors?.['passwordMismatch'] &&
                                         (formRegister.get('confirmPassword')?.touched || formRegister.get('confirmPassword')?.dirty)">
-      Passwords do not match.
-    </div>
+                Passwords do not match.
+              </div>
               </div>
             </div>
+
+            <!-- Phone Numbers -->
+          <!-- <div class="mb-3">
+            <label class="form-label">Phone Numbers</label>
+            <div *ngFor="let phoneCtrl of phoneNumbers.controls; let i = index" class="d-flex mb-2">
+              <input type="text"
+                    [formControl]="phoneCtrl"
+                    class="form-control me-2"
+                    placeholder="Enter phone number" />
+              <button type="button" class="btn btn-danger" (click)="removePhoneNumber(i)" *ngIf="phoneNumbers.length > 1">Remove</button>
+            </div>
+            <button type="button" class="btn btn-secondary mt-2" (click)="addPhoneNumber()">Add Phone Number</button>
+          </div> -->
+
 
             <!-- Submit -->
             <div class="d-grid mt-3">
