@@ -37,8 +37,7 @@ export class RegisterComponent {
 
   onSubmit() {
      if (this.formRegister.valid) {
-      console.log('Form Submitted!', this.formRegister.value);
-      // Here you can send the data to your API
+      alert("Registeration successfull");
     } else {
       console.log('Form is invalid');
       this.formRegister.markAllAsTouched(); // Highlight errors
