@@ -1,1 +1,25 @@
-<p>blogposts works!</p>
+<!-- <input type="text" [(ngModel)]="searchText" name="searchInput" (keyup)="searchInputFn($event)" placeholder="Search by title"> -->
+<input type="text" [(ngModel)]="searchText" name="searchInput" placeholder="Search by title">
+{{searchText}}
+<select [(ngModel)]="selectedFilter" (ngModelChange)="changeDropDown($event)" name="filter">
+  <option value="title_ascs"> filter by title ascending </option>
+  <option value="title_dscs"> filter by title descending </option>
+  <option value="id_ascs"> filter by ID ascending </option>
+  <option value="id_dscs"> filter by ID descending </option>
+</select><br>
+<p>Selected filter: {{ selectedFilter }}</p>
+<div class="user-table">
+  <div *ngFor="let user of userData">
+   {{user.id}}. {{ user.name }}
+  </div>
+</div>
+
+<br>
+Filtered Data
+<div class="user-table">
+  <div *ngFor="let user of filteredData | sort:searchText">
+   {{user.id}}. {{ user.name }}
+  </div>
+</div>
+
+
