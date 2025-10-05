@@ -86,10 +86,17 @@
             <option value="Id">By ID Ascending</option>
              <option value="Id-desc">By ID descending</option>
         </select>
+        <br><br>
         <div *ngFor="let user of users">
             {{user.id}}
             {{user.name}}
         </div>
+        <br>
+      <input type="text" name="searchFilter" placeholder="search name" (keyup)="searchRec($event)">
+      <div *ngFor="let user of searchListing">
+            {{user.id}}
+            {{user.name}}
+      </div>
     </div>
   <!-- Filter dropdown -->
 </div>

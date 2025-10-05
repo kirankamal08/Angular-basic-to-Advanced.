@@ -14,9 +14,12 @@ export class ListingComponent {
   users:any = [];
   selectedUser: any = null;
   dropdownVal:any = 'Id';
+  searchListing:any;
   constructor(private listingService:ListingService) {}
     ngOnInit(): void {
     this.loadUsers();
+    this.searchListing =  [...this.users];
+    console.log("here is the search Listing", this.searchListing);
   }
 
   loadUsers() {
@@ -61,5 +64,9 @@ export class ListingComponent {
   }
   cancelEdit() {
     this.selectedUser = null;
+  }
+  searchRec(searchVal:Event) {
+    const searchedVal = (searchVal.target as HTMLInputElement).value.toLowerCase();
+    this.searchListing = this.users.filter((val:any) => val.name.toLowerCase().includes(searchedVal));
   }
 }
