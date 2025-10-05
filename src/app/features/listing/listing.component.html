@@ -76,4 +76,20 @@
       <button type="button" (click)="cancelEdit()">Cancel</button>
     </form>
   </div>
+
+
+  <!-- Filter dropdown -->
+    <div>
+        <select name="selectId" (change) = "dropDownChange($event)">
+            <option value="A-Z"> A to Z</option>
+            <option value="Z-A"> Z to A</option>
+            <option value="Id">By ID Ascending</option>
+             <option value="Id-desc">By ID descending</option>
+        </select>
+        <div *ngFor="let user of users">
+            {{user.id}}
+            {{user.name}}
+        </div>
+    </div>
+  <!-- Filter dropdown -->
 </div>

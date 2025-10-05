@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 export class ListingComponent {
   users:any = [];
   selectedUser: any = null;
+  dropdownVal:any = 'Id';
   constructor(private listingService:ListingService) {}
     ngOnInit(): void {
     this.loadUsers();
@@ -43,9 +44,21 @@ export class ListingComponent {
     if(this.selectedUser && this.selectedUser.id === id) {
       this.selectedUser = null;
     }
-
   }
 
+
+  dropDownChange(val:Event) {
+     this.dropdownVal = (val.target as HTMLSelectElement).value;
+    if(this.dropdownVal === 'A-Z') {
+      this.users.sort((a:any, b:any) => a.name.localeCompare(b.name));
+    } else if(this.dropdownVal === 'Id') {
+       this.users.sort((a:any, b:any) => a.id - b.id);
+    } else if(this.dropdownVal === 'Z-A') {
+        this.users.sort((a:any, b:any) => b.name.localeCompare(a.name))
+    } else if(this.dropdownVal === 'Id-desc') {
+       this.users.sort((a:any, b:any) => b.id - a.id);
+    }
+  }
   cancelEdit() {
     this.selectedUser = null;
   }
