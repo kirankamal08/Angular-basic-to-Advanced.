@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { register } from 'node:module';
 import { RegisterComponent } from './features/users/register/register.component';
 import { BlogpostsComponent } from './features/blogposts/blogposts.component';
+import { ListingComponent } from './features/listing/listing.component';
 
 export const routes: Routes = [
     // {
@@ -21,7 +22,8 @@ export const routes: Routes = [
     { path: 'child-view', component: ChildComponent },
     { path: '', component: Day1FundamentalsComponent },
      { path: 'register', component:RegisterComponent },
-     {path:'blog', component:BlogpostsComponent}
+     {path:'blog', component:BlogpostsComponent},
+      {path:'listing', component:ListingComponent}
     //{ path: 'contact', component: ContactComponent },
     //{ path: '', redirectTo: '/basic-fundamentals', pathMatch: 'full' },
   //  { path: '', component: AppComponent, pathMatch: 'full' }

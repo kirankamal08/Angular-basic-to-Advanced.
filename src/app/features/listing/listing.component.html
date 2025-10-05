@@ -1,0 +1,79 @@
+<!-- <h2>Users Lists</h2>
+
+<table [border]="1" [cellPadding]="5">
+    <tbody>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Action</th>
+    </tr>
+    <tr *ngFor="let user of users">
+        <td>{{user?.id}}</td>
+        <td>{{user?.name}}</td>
+        <td>{{user?.email}}</td>
+        <td><button (click)="editRecord(user)">Edit</button></td>
+    </tr>
+    </tbody>
+</table>
+
+
+
+<div *ngIf="selectedUser">
+  <h3>Edit User</h3>
+  <form (ngSubmit)="saveUser()">
+    <label>Name:</label>
+    <input [(ngModel)]="selectedUser.name" name="name" />
+    <br /><br />
+
+    <label>Email:</label>
+    <input [(ngModel)]="selectedUser.email" name="email" />
+    <br /><br />
+
+    <button type="submit">Save</button>
+    <button type="button" (click)="cancelEdit()">Cancel</button>
+  </form>
+</div> -->
+
+
+<h2>Users Lists</h2>
+
+<div style="display: flex; align-items: flex-start; gap: 40px;">
+  <!-- Left side: User list table -->
+  <table border="1" cellpadding="5">
+    <tbody>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Action</th>
+      </tr>
+      <tr *ngFor="let user of users">
+        <td>{{ user?.id }}</td>
+        <td>{{ user?.name }}</td>
+        <td>{{ user?.email }}</td>
+        <td><button (click)="editRecord(user)">Edit</button></td>
+         <td><button (click)="deleteRecord(user.id)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Right side: Edit form -->
+  <div *ngIf="selectedUser" style="min-width: 250px; border: 1px solid #ccc; padding: 16px; border-radius: 8px;">
+    <h3>Edit User</h3>
+    <form (ngSubmit)="saveUser()">
+      <div style="margin-bottom: 10px;">
+        <label>Name:</label><br />
+        <input [(ngModel)]="selectedUser.name" name="name" />
+      </div>
+
+      <div style="margin-bottom: 10px;">
+        <label>Email:</label><br />
+        <input [(ngModel)]="selectedUser.email" name="email" />
+      </div>
+
+      <button type="submit">Save</button>
+      <button type="button" (click)="cancelEdit()">Cancel</button>
+    </form>
+  </div>
+</div>
