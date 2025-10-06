@@ -92,8 +92,10 @@
             {{user.name}}
         </div>
         <br>
-      <input type="text" name="searchFilter" placeholder="search name" (keyup)="searchRec($event)">
-      <div *ngFor="let user of searchListing">
+      <!-- <input type="text" name="searchFilter" placeholder="search name" (keyup)="searchRec($event)"> -->
+      <input type="text" [(ngModel)] = "searchText" name="searchFilter" placeholder="search name">
+      {{searchText}}
+      <div *ngFor="let user of searchListing | sort:searchText">
             {{user.id}}
             {{user.name}}
       </div>

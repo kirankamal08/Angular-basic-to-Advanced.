@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { ListingService } from '../../core/services/listing.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { SortPipe } from '../../core/pipes/sort.pipe';
 
 @Component({
   selector: 'app-listing',
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule,FormsModule,SortPipe],
   templateUrl: './listing.component.html',
   styleUrl: './listing.component.css',
   providers:[ListingService]
@@ -15,6 +16,7 @@ export class ListingComponent {
   selectedUser: any = null;
   dropdownVal:any = 'Id';
   searchListing:any;
+  searchText:any
   constructor(private listingService:ListingService) {}
     ngOnInit(): void {
     this.loadUsers();
@@ -48,7 +50,6 @@ export class ListingComponent {
       this.selectedUser = null;
     }
   }
-
 
   dropDownChange(val:Event) {
      this.dropdownVal = (val.target as HTMLSelectElement).value;
