@@ -6,6 +6,7 @@ import { register } from 'node:module';
 import { RegisterComponent } from './features/users/register/register.component';
 import { BlogpostsComponent } from './features/blogposts/blogposts.component';
 import { ListingComponent } from './features/listing/listing.component';
+import { UserFormComponent } from './features/user-form/user-form.component';
 
 export const routes: Routes = [
     // {
@@ -23,7 +24,8 @@ export const routes: Routes = [
     { path: '', component: Day1FundamentalsComponent },
      { path: 'register', component:RegisterComponent },
      {path:'blog', component:BlogpostsComponent},
-      {path:'listing', component:ListingComponent}
+      {path:'listing', component:ListingComponent},
+      {path:'user', component:UserFormComponent}
     //{ path: 'contact', component: ContactComponent },
     //{ path: '', redirectTo: '/basic-fundamentals', pathMatch: 'full' },
   //  { path: '', component: AppComponent, pathMatch: 'full' }

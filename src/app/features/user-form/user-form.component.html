@@ -1,0 +1,109 @@
+<div style="display: flex; align-items: flex-start; gap: 40px;">
+<form [formGroup]="userForm" (ngSubmit)="OnSubmitUserForm()" class="container mt-4 p-4 border rounded shadow-sm bg-light">
+  <div class="mb-3">
+    <label for="firstname" class="form-label">Firstname:</label>
+    <input
+      type="text"
+      id="firstname"
+      formControlName="firstname"
+      class="form-control"
+      placeholder="Firstname"
+    />
+    <div style="color:Red" *ngIf="userForm.get('firstname')?.invalid && 
+              (userForm.get('firstname')?.touched || submitted)">Firstname has errors</div>
+  </div>
+
+  <div class="mb-3">
+    <label for="lastname" class="form-label">Lastname:</label>
+    <input
+      type="text"
+      id="lastname"
+      formControlName="lastname"
+      class="form-control"
+      placeholder="Lastname"
+    />
+  </div>
+  <!-- <div style="color:Red" *ngIf="userForm?.get('lastname')?.invalid && (userForm?.get('lastname')?.dirty || userForm?.get('lastname')?.touched)">Lastname has errors</div> -->
+
+  <div class="mb-3">
+    <label for="email" class="form-label">Email:</label>
+    <input
+      type="email"
+      id="email"
+      formControlName="email"
+      class="form-control"
+      placeholder="Email"
+    />
+  </div>
+  <!-- <div style="color:Red" *ngIf="userForm?.get('email')?.invalid && (userForm?.get('email')?.dirty || userForm?.get('email')?.touched)">Email has errors</div> -->
+
+
+  <div class="mb-3">
+    <label for="designation" class="form-label">Designation:</label>
+    <select
+      id="designation"
+      formControlName="designation"
+      class="form-select"
+      (change)="onChangeDesignation($event)"
+    >
+      <option value="">Select Designation</option>
+      <option value="Software Engineer">Software Engineer</option>
+      <option value="Business Analyst">Business Analyst</option>
+      <option value="Tester">Tester</option>
+      <option value="Content Writer">Content Writer</option>
+      <option value="Web Designer">Web Designer</option>
+    </select>
+
+    <div class="mb-3" formArrayName="skills">
+        <label>skills</label>
+        <div *ngFor="let ski of skillsSets.controls; let i = index" [formGroupName]="i">
+             <input type="text" formControlName="skill">
+             <button (click)="remove(i)">-</button>
+        </div>
+        <button (click)="addSkills()">+</button>
+        <!-- <input type="text" name="">&nbsp;<button (click)="addSkills()">+</button> -->
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary w-100">Submit</button>
+</form>
+
+
+ <!-- Display stored data -->
+  <div style="min-width: 250px; border: 1px solid #ccc; padding: 16px; border-radius: 8px;">
+  <div class="mt-5">
+    <h4>Saved Users</h4>
+    <div *ngIf="usersData; else noData">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+            <th>Designation</th>
+            <th>Skills</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of usersData">
+            <td>{{ user.firstname }}</td>
+            <td>{{ user.lastname }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.designation }}</td>
+            <td>
+              <ul>
+                <li style="list-style: none;" *ngFor="let s of user.skills">{{ s.skill }}</li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <ng-template #noData>
+      <p class="text-muted">No users stored yet.</p>
+    </ng-template>
+  </div>
+</div>
+</div>
+
